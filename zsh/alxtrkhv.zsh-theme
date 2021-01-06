@@ -1,4 +1,4 @@
-compdef _set-prompt set-prompt
+compdef _setprompt setprompt
 
 setopt PROMPTSUBST
 
@@ -34,7 +34,7 @@ function unset-rprompt() {
     unset RPROMPT
 }
 
-function set-prompt() {
+function setprompt() {
     case "$1" in
         full)
             PROMPT=$PROMPT_FULL
@@ -52,7 +52,7 @@ function set-prompt() {
 }
 
 
-function _set-prompt() {
+function _setprompt() {
     _arguments : \
         "1: :(full lite no-directory)"
 
