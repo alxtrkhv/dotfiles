@@ -24,7 +24,7 @@ PROMPT_FULL_NO_DIR="$CLOCK $GIT_PROMPT "
 PROMPT=$PROMPT_FULL
 RPROMPT="$FULL_PATH $HISTORY_INDEX"
 
-function use_rprompt() {
+function set_rprompt() {
     RPROMPT="$FULL_PATH $HISTORY_INDEX"
 }
 
@@ -36,11 +36,11 @@ function set_prompt() {
     case "$1" in
         full)
             PROMPT=$PROMPT_FULL
-            use_rprompt
+            set_rprompt
             ;;
         no-directory)
             PROMPT=$PROMPT_FULL_NO_DIR
-            use_rprompt
+            set_rprompt
             ;;
         lite)
             PROMPT=$PROMPT_FULL_NO_DIR
