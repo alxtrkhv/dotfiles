@@ -1,0 +1,17 @@
+#!/bin/sh
+
+REGEX_ISSUE='[a-zA-Z]+-[0-9]+'
+REGEX_MESSAGE_PREFIX='^\[.*\]'
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+COMMIT_FILE=$1
+COMMIT_MESSAGE=$(cat $COMMIT_FILE)
+
+MESSAGE_PREFIX=$(echo $COMMIT_MESSAGE | grep -Eom 1 $REGEX_MESSAGE_PREFIX)
+ISSUE=$(echo $BRANCH | grep -Eom 1 $REGEX_ISSUE | tr '[a-z]' '[A-Z]')
+
+if [ -z "$MESSAGE_PREFIX" ]; then
+    if [ -n "$ISSUE" ]; then
+        echo "[$ISSUE] $COMMIT_MESSAGE" >$COMMIT_FILE
+    fi
+fi

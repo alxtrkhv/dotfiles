@@ -1,0 +1,7 @@
+- shell:
+    - command: |-
+        if ! [[ -d ~/.oh-my-zsh ]]; then
+          git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+        fi
+- link:
+    ~/.oh-my-zsh/custom/themes/alxtrkhv.zsh-theme: zsh/alxtrkhv.zsh-theme

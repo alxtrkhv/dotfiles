@@ -1,0 +1,8 @@
+- shell:
+    - command: |-
+        if ! which code >/dev/null; then
+          case "$OSTYPE" in
+            darwin*) brew install visual-studio-code ;;
+            *) echo "Current OS is not supported" ;;
+          esac
+        fi

@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+case "$OSTYPE" in
+    darwin*)
+        SERVICE_NAME="Wi-Fi"
+
+        function turn_on() {
+            networksetup -setsocksfirewallproxystate $SERVICE_NAME on
+        }
+
+        function turn_off() {
+            networksetup -setsocksfirewallproxystate $SERVICE_NAME off
+        }
+
+        function toggle() {
+            if networksetup -getsocksfirewallproxy $SERVICE_NAME | grep -m1 "Enabled: Yes" 1>/dev/null; then
+                turn_off
+                echo "$SERVICE_NAME proxy is Off"
+            else
+                turn_on
+                echo "$SERVICE_NAME proxy is On"
+            fi
+        }
+
+        function set() {
+            networksetup -setsocksfirewallproxy $SERVICE_NAME $1 $2
+            echo "$SERVICE_NAME proxy set to $1:$2 and is on"
+        }
+
+        if [[ $# -eq 0 ]]; then
+            toggle
+        else
+            set $@
+            turn_on
+        fi
+        ;;
+    *) echo "$OSTYPE is not supported" ;;
+esac

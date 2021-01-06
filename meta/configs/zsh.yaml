@@ -1,0 +1,8 @@
+- link:
+    ~/.zshrc: zsh/zshrc
+
+- shell:
+    - command: |-
+        if ! [[ -f ~/.zshrc_specific ]]; then
+          touch $HOME/.zshrc_specific
+        fi

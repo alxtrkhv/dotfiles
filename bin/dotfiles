@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+cd ${DOTFILES_DIR:="$HOME/.dotfiles"}
+
+while getopts ":egri:p:" OPTION; do
+    case "$OPTION" in
+    e)
+        code .
+        exit 0
+        ;;
+    i)
+        ./install-standalone $OPTARG
+        exit 0
+        ;;
+    p)
+        ./install-profile $OPTARG
+        exit 0
+        ;;
+    g)
+        shift $((OPTIND-1))
+        git "$@"
+        exit 0
+        ;;
+    r)
+        echo $DOTFILES_DIR
+        exit 0
+        ;;
+    esac
+done
+shift $((OPTIND-1))
+
+MODE="$1"
+
+case "$MODE" in
+    update)
+        git add .
+        git commit -m "Update dotfiles"
+        git push
+        ;;
+    reset)
+        git reset --hard
+        git clean -f .
+        ;;
+    drop-history)
+        git checkout --orphan temp
+        git commit -m "Initial commit"
+        git branch -M master
+        git push -f -u origin master
+        ;;
+    sync)
+        git add .
+        git commit -m "Update dotfiles"
+        git pull --rebase
+        git push
+        ;;
+    pull) git pull --rebase ;;
+    status) git status -s ;;
+    diff) git diff ;;
+    *) "$@" ;;
+esac

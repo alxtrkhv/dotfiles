@@ -1,0 +1,4 @@
+- link:
+    /Cmder/vendor/conemu-maximus5/ConEmu.xml:
+      path: cmder/ConEmu.xml
+      force: true

@@ -1,0 +1,37 @@
+# OH-MY-ZSH #
+#############
+
+if [[ -d "$HOME/.oh-my-zsh" ]]; then
+    export ZSH="$HOME/.oh-my-zsh"
+    ZSH_THEME="alxtrkhv"
+    plugins=(web-search jira)
+    source $ZSH/oh-my-zsh.sh
+fi
+
+# BASIC #
+#########
+
+setopt HIST_IGNORE_SPACE
+
+export PATH=$HOME/bin:$PATH
+if [[ -x "$(which code)" ]]; then
+    export EDITOR="code --wait"
+fi
+hash -d PROJECTS="$HOME/Projects"
+
+# UNITY #
+#########
+
+export UNITY_DEFAULT_VERSION="2018.4.16f1"
+export UNITY_CODE_EDITOR="code"
+alias u3d=unity3d
+
+# PYTHON #
+##########
+
+alias activate=". ./env/bin/activate"
+
+# LOCAL CONFIG #
+################
+
+source $HOME/.zshrc_specific

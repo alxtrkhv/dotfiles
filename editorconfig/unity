@@ -1,0 +1,15 @@
+[*]
+indent_style = space
+indent_size = 4
+
+[*.json]
+indent_size = 2
+
+[*.cs]
+max_line_length = off
+csharp_space_after_cast = false
+csharp_preserve_single_line_statements = false
+csharp_place_simple_embedded_statement_on_same_line = false
+csharp_new_line_before_open_brace = types, methods
+csharp_new_line_before_else = false
+csharp_space_within_single_line_array_initializer_braces = true
