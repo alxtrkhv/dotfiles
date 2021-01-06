@@ -54,6 +54,6 @@ function set-prompt() {
 
 function _set-prompt() {
     _arguments : \
-        "1:boooo:(full lite no-directory)"
+        "1: :(full lite no-directory)"
 
 }
