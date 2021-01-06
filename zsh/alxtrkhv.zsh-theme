@@ -1,3 +1,5 @@
+compdef _set-prompt set-prompt
+
 setopt PROMPTSUBST
 
 CLOCK="%B%(?:%F{6}:%F{red})%*%f%b"
@@ -24,15 +26,15 @@ PROMPT_FULL_NO_DIR="$CLOCK $GIT_PROMPT "
 PROMPT=$PROMPT_FULL
 RPROMPT="$FULL_PATH $HISTORY_INDEX"
 
-function set_rprompt() {
+function set-rprompt() {
     RPROMPT="$FULL_PATH $HISTORY_INDEX"
 }
 
-function unset_rprompt() {
+function unset-rprompt() {
     unset RPROMPT
 }
 
-function set_prompt() {
+function set-prompt() {
     case "$1" in
         full)
             PROMPT=$PROMPT_FULL
@@ -47,4 +49,11 @@ function set_prompt() {
             unset_rprompt
             ;;
     esac
+}
+
+
+function _set-prompt() {
+    _arguments : \
+        "1:boooo:(full lite no-directory)"
+
 }
