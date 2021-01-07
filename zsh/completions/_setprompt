@@ -1,0 +1,7 @@
+#compdef _setprompt setprompt
+#autoload
+
+function _setprompt() {
+    _arguments : \
+        "1: :(full lite no-directory)"
+}

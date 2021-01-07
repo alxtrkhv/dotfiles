@@ -1,5 +1,3 @@
-compdef _setprompt setprompt
-
 setopt PROMPTSUBST
 
 CLOCK="%B%(?:%F{6}:%F{red})%*%f%b"
@@ -38,22 +36,15 @@ function setprompt() {
     case "$1" in
         full)
             PROMPT=$PROMPT_FULL
-            set_rprompt
+            set-rprompt
             ;;
         no-directory)
             PROMPT=$PROMPT_FULL_NO_DIR
-            set_rprompt
+            set-rprompt
             ;;
         lite)
             PROMPT=$PROMPT_FULL_NO_DIR
-            unset_rprompt
+            unset-rprompt
             ;;
     esac
-}
-
-
-function _setprompt() {
-    _arguments : \
-        "1: :(full lite no-directory)"
-
 }

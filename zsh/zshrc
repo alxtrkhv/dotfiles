@@ -1,3 +1,16 @@
+# BASIC #
+#########
+
+setopt HIST_IGNORE_SPACE
+
+PATH="$HOME/bin:$PATH"
+FPATH="$FPATH:$(dotfiles -r)/zsh/completions"
+if [[ -x "$(which code)" ]]; then
+    export EDITOR="code --wait"
+fi
+hash -d PROJECTS="$HOME/Projects"
+
+
 # OH-MY-ZSH #
 #############
 
@@ -7,17 +20,6 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
     plugins=(web-search jira)
     source $ZSH/oh-my-zsh.sh
 fi
-
-# BASIC #
-#########
-
-setopt HIST_IGNORE_SPACE
-
-export PATH=$HOME/bin:$PATH
-if [[ -x "$(which code)" ]]; then
-    export EDITOR="code --wait"
-fi
-hash -d PROJECTS="$HOME/Projects"
 
 # UNITY #
 #########
