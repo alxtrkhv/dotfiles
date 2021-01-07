@@ -1,7 +1,5 @@
-#compdef _setprompt setprompt
+#compdef setprompt
 #autoload
 
-function _setprompt() {
-    _arguments : \
-        "1: :(full lite no-directory)"
-}
+_arguments : \
+    "1: :(full lite no-directory)"
