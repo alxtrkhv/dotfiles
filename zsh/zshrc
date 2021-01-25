@@ -10,6 +10,9 @@ if [[ -x "$(which code)" ]]; then
 fi
 hash -d PROJECTS="$HOME/Projects"
 
+function try-tmux() {
+    tmux attach || tmux
+}
 
 # OH-MY-ZSH #
 #############
