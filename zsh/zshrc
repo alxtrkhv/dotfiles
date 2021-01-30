@@ -8,7 +8,10 @@ FPATH="$FPATH:$(dotfiles -r)/zsh/completions"
 if [[ -x "$(which code)" ]]; then
     export EDITOR="code --wait"
 fi
-hash -d PROJECTS="$HOME/Projects"
+
+if [[ -d "$HOME/Projects" ]]; then
+    hash -d PROJECTS="$HOME/Projects"
+fi
 
 function tmux-try() {
     tmux attach || tmux
