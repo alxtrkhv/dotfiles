@@ -55,8 +55,7 @@ $RECYCLE.BIN/
 # JetBrains
 **/.idea/*
 **/Assets/Plugins/Editor/JetBrains*
-
-#####Envs
+##### Envs
 venv/
 env/
 .venv/
