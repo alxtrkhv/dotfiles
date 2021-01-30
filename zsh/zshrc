@@ -10,7 +10,7 @@ if [[ -x "$(which code)" ]]; then
 fi
 hash -d PROJECTS="$HOME/Projects"
 
-function try-tmux() {
+function tmux-try() {
     tmux attach || tmux
 }
 
@@ -34,7 +34,7 @@ alias u3d=unity3d
 # PYTHON #
 ##########
 
-alias activate=". ./env/bin/activate"
+alias activate-venv=". ./env/bin/activate"
 
 # LOCAL CONFIG #
 ################
