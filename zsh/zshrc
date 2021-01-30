@@ -27,7 +27,7 @@ fi
 # UNITY #
 #########
 
-export UNITY_DEFAULT_VERSION="2018.4.16f1"
+export UNITY_DEFAULT_VERSION="2019.4.16f1"
 export UNITY_CODE_EDITOR="code"
 alias u3d=unity3d
 
