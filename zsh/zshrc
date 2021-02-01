@@ -17,6 +17,10 @@ function tmux-try() {
     tmux attach || tmux
 }
 
+function get-now() {
+    echo $(date +'%Y-%m-%d-%H-%M-%S')
+}
+
 # OH-MY-ZSH #
 #############
 
