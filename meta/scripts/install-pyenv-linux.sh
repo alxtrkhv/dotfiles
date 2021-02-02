@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-sudo apt-get update -y \
-sudo apt-get install -y \
+sudo apt update
+sudo apt install -y \
     make \
     build-essential \
     libssl-dev \
@@ -18,8 +18,8 @@ sudo apt-get install -y \
     tk-dev \
     libffi-dev \
     liblzma-dev \
-    python-openssl \
-    git \
+    python-openssl
+
 git clone https://github.com/pyenv/pyenv $HOME/.pyenv
 git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $HOME/.pyenv/plugins/pyenv-virtualenvwrapper
 echo '' >> $HOME/.zshrc_specific
