@@ -7,8 +7,8 @@
 HELP_MESSAGE="\
 -f - use specific version
 -d - use default version (UNITY_DEFAULT_VERSION)
--p - specify project path ('unity3d [OPTIONS] PATH' works as well)
 -b - open Unity Hub
+-e - open both Unity and UNITY_CODE_EDITOR
 -h - show this message"
 
 VERSION_REGEX="[0-9]+[.][0-9]+[.][0-9]+[a-zA-Z][0-9]"
@@ -27,7 +27,13 @@ function show_help_message(){
     exit 0
 }
 
-while getopts ":dhbp:f:" OPTION; do
+function open_code_editor(){
+    if [[ ! -z $UNITY_CODE_EDITOR ]]; then
+        $UNITY_CODE_EDITOR $PROJECT_PATH
+    fi
+}
+
+while getopts ":dhebp:f:" OPTION; do
     case "$OPTION" in
     f)
         if [[ "$OPTARG" =~ $VERSION_REGEX ]]; then
@@ -38,23 +44,21 @@ while getopts ":dhbp:f:" OPTION; do
         UNITY_VERSION=$UNITY_DEFAULT_VERSION
         ;;
 
-    p)
-        PROJECT_PATH=$OPTARG
-        ;;
     h)
         show_help_message
         ;;
     b)
         open_hub
         ;;
+    e)
+        OPEN_EDITOR=true
+        ;;
     esac
 done
 
 shift $((OPTIND - 1))
 
-if [[ -z $PROJECT_PATH ]]; then
-    PROJECT_PATH=$1
-fi
+PROJECT_PATH=$1
 
 if [[ -z $UNITY_VERSION ]]; then
     UNITY_VERSION=$(cat $PROJECT_PATH/ProjectSettings/ProjectVersion.txt | grep -Eom 1 "$VERSION_REGEX") ||
@@ -74,3 +78,7 @@ case "$OSTYPE" in
 esac
 
 "$INSTALLATION_PATH_PREFIX/$UNITY_VERSION/$INSTALLATION_PATH_POSTFIX" -projectPath $PROJECT_PATH & disown -h
+
+if [[ $OPEN_EDITOR == true ]]; then
+    open_code_editor
+fi
