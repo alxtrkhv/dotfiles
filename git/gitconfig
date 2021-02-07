@@ -12,6 +12,7 @@
 	rebase = true
 [advice]
 	detachedhead = false
+	addIgnoredFile = false
 [alias]
 	st = status -s
 	br = branch
