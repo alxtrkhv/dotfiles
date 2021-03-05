@@ -64,5 +64,5 @@ case "$EXTENSION" in
             GIT_OPTION="--dry-run"
         fi
 
-        git push -u $GIT_OPTION origin $(git branch --show-current)
+        git push -u $GIT_OPTION ${1:-"origin"} $(git branch --show-current)
 esac
