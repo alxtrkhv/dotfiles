@@ -59,5 +59,10 @@ case "$EXTENSION" in
             git commit -m "$COMMIT_MESSAGE"
         fi
         ;;
+    "setup-tracking")
+        if [[ $OPTION_F != true ]]; then
+            GIT_OPTION="--dry-run"
+        fi
 
+        git push -u $GIT_OPTION origin $(git branch --show-current)
 esac
