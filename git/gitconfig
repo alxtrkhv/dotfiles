@@ -32,6 +32,7 @@
 	ignore = !curl -sL https://www.toptal.com/developers/gitignore/api/$@
 	gone = !"git-extensions prune-gone-branches"
 	cocmm = !"git-extensions checkout-and-commit"
+	track = !"git push -u origin $(git branch --show-current)"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
