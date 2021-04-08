@@ -43,6 +43,11 @@ alias u3d=unity3d
 
 alias activate-venv=". ./env/bin/activate"
 
+# DOTNET #
+##########
+
+export DOTNET_CLI_TELEMETRY_OPTOUT='true'
+
 # LOCAL CONFIG #
 ################
 
