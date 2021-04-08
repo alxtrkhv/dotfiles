@@ -47,6 +47,7 @@ alias activate-venv=". ./env/bin/activate"
 ##########
 
 export DOTNET_CLI_TELEMETRY_OPTOUT='true'
+PATH="$PATH:$HOME/.dotnet/tools"
 
 # LOCAL CONFIG #
 ################
