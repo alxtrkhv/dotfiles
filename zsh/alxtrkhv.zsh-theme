@@ -20,6 +20,7 @@ ZSH_THEME_GIT_PROMPT_STASHED="%F{3}S%f"
 
 PROMPT_FULL="$CLOCK $DIRECTORY $GIT_PROMPT "
 PROMPT_FULL_NO_DIR="$CLOCK $GIT_PROMPT "
+PROMPT_GIT_ONLY="$GIT_PROMPT "
 
 PROMPT=$PROMPT_FULL
 RPROMPT="$FULL_PATH $HISTORY_INDEX"
@@ -43,7 +44,7 @@ function setprompt() {
             set-rprompt
             ;;
         lite)
-            PROMPT=$PROMPT_FULL_NO_DIR
+            PROMPT=$PROMPT_GIT_ONLY
             unset-rprompt
             ;;
     esac
