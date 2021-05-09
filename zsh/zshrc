@@ -13,7 +13,7 @@ if [[ -d "$HOME/Projects" ]]; then
     hash -d PROJECTS="$HOME/Projects"
 fi
 
-function tmux-try() {
+function tm() {
     tmux attach || tmux
 }
 
@@ -41,7 +41,7 @@ alias u3d=unity3d
 # PYTHON #
 ##########
 
-alias activate-venv=". ./env/bin/activate"
+alias venv=". ./env/bin/activate"
 
 # .NET #
 ##########
