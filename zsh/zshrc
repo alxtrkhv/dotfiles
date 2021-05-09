@@ -21,7 +21,7 @@ function get-now() {
     echo $(date +'%Y-%m-%d-%H-%M-%S')
 }
 
-# OH-MY-ZSH #
+# OMZ #
 #############
 
 if [[ -d "$HOME/.oh-my-zsh" ]]; then
@@ -43,7 +43,7 @@ alias u3d=unity3d
 
 alias activate-venv=". ./env/bin/activate"
 
-# DOTNET #
+# .NET #
 ##########
 
 export DOTNET_CLI_TELEMETRY_OPTOUT='true'
