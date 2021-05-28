@@ -25,10 +25,6 @@ PROMPT_GIT_ONLY="$GIT_PROMPT "
 PROMPT=$PROMPT_FULL
 RPROMPT="$FULL_PATH $HISTORY_INDEX"
 
-if [[ "$USE_LITE_PROMPT" == true ]]; then
-    PROMPT=$PROMPT_GIT_ONLY
-fi
-
 function set-rprompt() {
     RPROMPT="$FULL_PATH $HISTORY_INDEX"
 }
@@ -53,3 +49,7 @@ function setprompt() {
             ;;
     esac
 }
+
+if [[ "$USE_LITE_PROMPT" == true ]]; then
+    setprompt lite
+fi
