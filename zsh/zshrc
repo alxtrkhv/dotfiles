@@ -27,7 +27,7 @@ function get-now() {
 if [[ -d "$HOME/.oh-my-zsh" ]]; then
     export ZSH="$HOME/.oh-my-zsh"
     ZSH_THEME="alxtrkhv"
-    plugins=(web-search jira)
+    plugins=(web-search)
     source $ZSH/oh-my-zsh.sh
 fi
 
