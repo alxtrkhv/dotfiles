@@ -10,7 +10,8 @@ if [[ -x "$(which code)" ]]; then
 fi
 
 if [[ -d "$HOME/Projects" ]]; then
-    hash -d PROJECTS="$HOME/Projects"
+    hash -d P="$HOME/Projects"
+    hash -d p="$HOME/Projects"
 fi
 
 function tm() {
