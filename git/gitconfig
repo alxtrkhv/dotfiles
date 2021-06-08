@@ -3,7 +3,6 @@
 	email = alxtrkhv@gmail.com
 [core]
 	autocrlf = input
-	editor = code --wait
 	excludesfile = ~/.gitignore_global
 	attributesfile = ~/.gitattributes_global
 [fetch]
