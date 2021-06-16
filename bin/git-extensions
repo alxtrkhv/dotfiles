@@ -26,15 +26,15 @@ case "$EXTENSION" in
 
     "checkout-and-commit")
         if [[ $OPTION_F == true ]]; then
-            GIT_OPTION="-B"
+            CHECKOUT_OPTION="-B"
         else
-            GIT_OPTION="-b"
+            CHECKOUT_OPTION="-b"
         fi
 
         BRANCH_NAME="$1"
         COMMIT_MESSAGE="$2"
 
-        if git checkout $GIT_OPTION $BRANCH_NAME; then
+        if git checkout $CHECKOUT_OPTION $BRANCH_NAME; then
             if [[ $OPTION_A == true ]]; then
                 git add .
             fi
