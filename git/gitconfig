@@ -21,7 +21,6 @@
 	cm = commit
 	cmm = commit -m
 	co = checkout --ignore-other-worktrees
-	cd = checkout --ignore-other-worktrees
 	lg = log --graph --oneline
 	lgm = log --graph --oneline master
 	lf = log --graph --oneline --branches --remotes
