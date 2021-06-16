@@ -9,6 +9,8 @@
 	prune = true
 [pull]
 	rebase = true
+[init]
+	defaultbranch = main
 [advice]
 	detachedhead = false
 	addIgnoredFile = false
