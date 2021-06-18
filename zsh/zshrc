@@ -23,9 +23,9 @@ function get-now() {
 }
 
 function jticket() {
-    ticket_number=$(echo $(git_current_branch | grep -Eom 1 '[a-zA-Z]+-[0-9]+'))
-    if [[ ! -z "$JIRA_HOST" ]]; then
-        open_command "$JIRA_HOST/browse/$ticket_number"
+    TICKET_NUMBER=$(echo $(git_current_branch | grep -Eom 1 '[a-zA-Z]+-[0-9]+'))
+    if [[ ! -z "$JIRA_HOST" ]] && [[ ! -z "$TICKET_NUMBER"]]; then
+        open_command "$JIRA_HOST/browse/$TICKET_NUMBER"
     fi
 }
 

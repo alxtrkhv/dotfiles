@@ -5,6 +5,7 @@
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
 	attributesfile = ~/.gitattributes_global
+	editor = vim
 [fetch]
 	prune = true
 [pull]
