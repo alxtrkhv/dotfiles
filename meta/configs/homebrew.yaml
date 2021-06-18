@@ -1,0 +1,9 @@
+- shell:
+    - command: |-
+        if ! which brew >/dev/null; then
+          case $OSTYPE in
+            darwin*) /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" ;;
+            linux*) /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" ;;
+            *) echo "Current OS is not supported" ;;
+          esac
+        fi

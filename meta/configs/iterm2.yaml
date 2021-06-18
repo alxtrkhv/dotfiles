@@ -1,0 +1,8 @@
+- link:
+    ~/.config/iterm2: iterm2
+
+- shell:
+    - command: |-
+        if ! [[ -d /Applications/iTerm.app ]]; then
+          brew cask install iterm2
+        fi

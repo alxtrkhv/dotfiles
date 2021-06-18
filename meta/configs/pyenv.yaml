@@ -1,0 +1,10 @@
+- shell:
+    - command: |-
+        if ! [[ -d ~/.pyenv ]]; then
+          case "$OSTYPE" in
+            darwin*) meta/scripts/install-pyenv-mac.sh ;;
+            linux*) meta/scripts/install-pyenv-linux.sh ;;
+            msys*) meta/scripts/install-pyenv-win.sh ;;
+            *) echo "Current OS is not supported" ;;
+          esac
+        fi

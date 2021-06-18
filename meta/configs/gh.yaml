@@ -1,0 +1,11 @@
+- link:
+    ~/.config/gh/config.yml: git/gh.yml
+
+- shell:
+    - command: |-
+        if ! which gh >/dev/null; then
+          case "$OSTYPE" in
+            darwin*) brew install gh ;;
+            *) echo "Current OS is not supported" ;;
+          esac
+        fi

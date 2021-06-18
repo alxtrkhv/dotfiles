@@ -1,0 +1,8 @@
+- shell:
+    - command: |-
+        if ! [[ -d /Library/Java/JavaVirtualMachines/openjdk-8.jdk ]]; then
+          case "$OSTYPE" in
+            darwin*) meta/scripts/install-openjdk8-mac.sh ;;
+            *) echo "Current OS is not supported"
+          esac
+        fi

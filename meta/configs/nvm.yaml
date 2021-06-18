@@ -1,0 +1,10 @@
+- shell:
+    - command: |-
+        if ! [[ -d ~/.nvm ]]; then
+          case "$OSTYPE" in
+            darwin*) meta/scripts/install-nvm-unix.sh ;;
+            linux*) meta/scripts/install-nvm-unix.sh ;;
+            msys*) meta/scripts/install-nvm-win.sh ;;
+            *) echo "Current OS is not supported" ;;
+          esac
+        fi

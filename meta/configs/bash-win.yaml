@@ -1,0 +1,8 @@
+- link:
+    ~/.bash_profile: bash/bash_profile-win
+    ~/.bashrc: bash/bashrc-win
+- shell:
+    - command: |-
+        if ! [[ -f  $HOME/.bashrc_specific ]]; then
+          touch $HOME/.bashrc_specific
+        fi
