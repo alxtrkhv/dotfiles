@@ -1,0 +1,13 @@
+#!/bin/bash
+
+case "$OSTYPE" in
+    darwin*)
+        if [[ "$1" == "-p" ]]; then
+            open -na "Firefox.app" --args "--ProfileManager"
+        else
+            open -na "Firefox.app"
+        fi
+        ;;
+
+    *) echo "Current OS is not supported" ;;
+esac

@@ -1,0 +1,70 @@
+#!/bin/bash
+
+EXTENSION="$1"
+shift
+
+while getopts "fau" OPTION; do
+    case $OPTION in
+        f) OPTION_F=true ;;
+        a) OPTION_A=true ;;
+        u) OPTION_U=true ;;
+    esac
+done
+shift $((OPTIND-1))
+
+case "$EXTENSION" in
+    "prune-gone-branches")
+        if [[ $OPTION_F == true ]]; then
+            GIT_OPTION="-D"
+        else
+            GIT_OPTION="-d"
+        fi
+
+        git fetch --prune
+        git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch $GIT_OPTION
+        ;;
+
+    "checkout-and-commit")
+        if [[ $OPTION_F == true ]]; then
+            CHECKOUT_OPTION="-B"
+        else
+            CHECKOUT_OPTION="-b"
+        fi
+
+        BRANCH_NAME="$1"
+        shift
+
+        COMMIT_MESSAGE="$@"
+
+        if git checkout "$CHECKOUT_OPTION" "$BRANCH_NAME"; then
+            if [[ $OPTION_A == true ]]; then
+                git add .
+            fi
+            git commit -m "${COMMIT_MESSAGE:-[WIP]}"
+        fi
+        ;;
+
+    "commit-wip")
+        if [[ $OPTION_U == true ]]; then
+            git add .
+        fi
+
+        if [[ $# -eq 0 ]]; then
+            COMMIT_MESSAGE="[WIP]"
+        else
+            COMMIT_MESSAGE="[WIP] $@"
+        fi
+
+        if [[ $OPTION_A == true ]]; then
+            git commit -a -m "$COMMIT_MESSAGE"
+        else
+            git commit -m "$COMMIT_MESSAGE"
+        fi
+        ;;
+    "setup-tracking")
+        if [[ $OPTION_F != true ]]; then
+            GIT_OPTION="--dry-run"
+        fi
+
+        git push -u $GIT_OPTION ${1:-"origin"} $(git branch --show-current)
+esac

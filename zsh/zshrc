@@ -1,0 +1,84 @@
+# BASIC #
+#########
+
+setopt HIST_IGNORE_SPACE
+
+PATH="$HOME/.local/bin:$PATH"
+FPATH="$FPATH:$(dotfiles -r)/zsh/completions"
+
+# M1 #
+######
+
+if [[ -d "/opt/homebrew" ]]; then
+    export HOMEBREW_PREFIX="/opt/homebrew"
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+    export HOMEBREW_REPOSITORY="/opt/homebrew"
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"
+    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
+    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+
+    FPATH="/opt/homebrew/share/zsh/site-functions:$FPATH"
+fi
+
+# OMZ #
+#######
+
+if [[ -d "$HOME/.oh-my-zsh" ]]; then
+    export ZSH="$HOME/.oh-my-zsh"
+    ZSH_THEME="alxtrkhv"
+    plugins=(web-search poetry docker docker-compose)
+    source $ZSH/oh-my-zsh.sh
+fi
+
+# UNITY #
+#########
+
+export UNITY_DEFAULT_VERSION="2022.2.7f1"
+export UNITY_CODE_EDITOR="rider"
+alias u3d=unity3d
+
+# .NET #
+##########
+
+export DOTNET_CLI_TELEMETRY_OPTOUT='true'
+PATH="$PATH:$HOME/.dotnet/tools"
+
+# HELPER FUNCTIONS #
+####################
+
+function t() {
+    tree -CalL "${1:-1}" "${@:2}"
+}
+
+function tm() {
+    tmux attach || tmux
+}
+
+function get-now() {
+    echo $(date +'%Y-%m-%d-%H-%M-%S')
+}
+
+function jticket() {
+    TICKET_NUMBER=$1
+
+    if [[ -z "$TICKET_NUMBER" ]]; then
+        TICKET_NUMBER=$(git_current_branch | grep -Eom 1 '[a-zA-Z]+-[0-9]+')
+    fi
+
+    if [[ ! -z "$JIRA_HOST" ]] && [[ ! -z "$TICKET_NUMBER" ]]; then
+        open_command "$JIRA_HOST/browse/$TICKET_NUMBER"
+    fi
+}
+
+function splitpath() {
+    echo $1 | tr ':' '\n'
+}
+
+function condainit() {
+    eval "$(conda shell.zsh hook 2>/dev/null)"
+}
+
+# LOCAL CONFIG #
+################
+
+source $HOME/.zshrc_specific

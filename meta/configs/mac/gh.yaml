@@ -1,0 +1,5 @@
+- link:
+    ~/.config/gh/config.yml: git/gh.yml
+
+- shell:
+    - command: brew install gh

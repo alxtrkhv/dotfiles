@@ -1,0 +1,2 @@
+- shell:
+    - command: brew install visual-studio-code

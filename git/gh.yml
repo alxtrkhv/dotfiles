@@ -1,0 +1,11 @@
+aliases:
+    open: pr create --base $1
+    push: pr create --base $1
+    checkout: pr checkout
+    co: pr checkout
+    cd: pr checkout
+    ls: pr list
+    st: pr status
+git_protocol: ssh
+editor: vim
+prompt: enabled

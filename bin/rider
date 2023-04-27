@@ -1,0 +1,13 @@
+#!/bin/bash
+
+case "$OSTYPE" in
+    darwin*)
+        open -a "Rider.app" "$@"
+        ;;
+    msys*)
+        "C:\Program Files\JetBrains\JetBrains Rider 2019.3.4\bin\rider64.exe" "$@" & disown -h
+        ;;
+    *)
+        echo "Current OS not supported"
+        ;;
+esac

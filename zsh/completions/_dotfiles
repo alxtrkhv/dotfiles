@@ -1,0 +1,5 @@
+#compdef dotfiles
+#autoload
+
+_arguments : \
+    "1: :(install update reset drop-history pull status diff)"

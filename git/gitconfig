@@ -1,0 +1,47 @@
+[user]
+	name = Alexander Terekhov
+	email = alxtrkhv@gmail.com
+[core]
+	autocrlf = input
+	excludesfile = ~/.gitignore_global
+	attributesfile = ~/.gitattributes_global
+	editor = vim
+[fetch]
+	prune = true
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+[init]
+	defaultbranch = main
+[advice]
+	detachedhead = false
+	addIgnoredFile = false
+[alias]
+	st = status -s
+	sw = switch --ignore-other-worktrees
+	br = branch
+	df = diff
+	dfs = diff --staged
+	dfa = diff HEAD
+	cm = commit
+	cmm = commit -m
+	co = checkout --ignore-other-worktrees
+	lg = log --graph --oneline
+	lf = log --graph --oneline --branches --remotes
+	lb = !git log --graph --oneline --first-parent
+	wip = !"git-extensions commit-wip"
+	amend = commit --amend
+	cleanup = !git reset --hard && git clean . -df
+	fixup = commit --no-verify --fixup
+	ignore = !curl -sL https://www.toptal.com/developers/gitignore/api/$@
+	gone = !"git-extensions prune-gone-branches"
+	cocmm = !"git-extensions checkout-and-commit"
+	track = !"git-extensions setup-tracking"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[include]
+	path = ~/.gitconfig_specific

@@ -1,0 +1,16 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stdin: true
+      stdout: true
+      stderr: true
+
+- clean:
+    ~/:
+      force: true
+    ~/.local/bin:
+      force: true
+    ~/.config/:
+      recursive: true

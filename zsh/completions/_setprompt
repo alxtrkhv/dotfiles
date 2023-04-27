@@ -1,0 +1,5 @@
+#compdef setprompt
+#autoload
+
+_arguments : \
+    "1: :(full lite no-directory no-git)"

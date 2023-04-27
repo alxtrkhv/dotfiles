@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# Required variables:
+# UNITY_DEFAULT_VERSION - default version of Unity3D
+# UNITY_INSTALLATION_PREFIX - custom path to the folder one stores different Unity3D versions in
+
+HELP_MESSAGE="\
+-f - use specific version
+-d - use default version (UNITY_DEFAULT_VERSION)
+-b - open Unity Hub
+-e - open both Unity and UNITY_CODE_EDITOR
+-c - run with arguments
+-h - show this message"
+
+VERSION_REGEX="[0-9]+[.][0-9]+[.][0-9]+[a-zA-Z][0-9]"
+
+
+function open_hub(){
+    case "$OSTYPE" in
+        darwin*) open -a "Unity Hub.app";;
+        msys*) start "" "C:\\Program Files\\Unity Hub\\Unity Hub.exe";;
+    esac
+    exit 0
+}
+
+function show_help_message(){
+    echo "$HELP_MESSAGE"
+    exit 0
+}
+
+function open_code_editor(){
+    if [[ ! -z $UNITY_CODE_EDITOR ]]; then
+        $UNITY_CODE_EDITOR $PROJECT_PATH/$(basename $(realpath $PROJECT_PATH)).sln
+    fi
+}
+
+while getopts ":dhebc:p:f:" OPTION; do
+    case "$OPTION" in
+    f)
+        if [[ "$OPTARG" =~ $VERSION_REGEX ]]; then
+            UNITY_VERSION=$OPTARG
+        fi
+        ;;
+    d)
+        UNITY_VERSION=$UNITY_DEFAULT_VERSION
+        ;;
+    h)
+        show_help_message
+        ;;
+    b)
+        open_hub
+        ;;
+    e)
+        OPEN_EDITOR=true
+        ;;
+    c)
+        BATCH_MODE=true
+        ARGUMENTS="$OPTARG"
+        ;;
+    esac
+done
+
+shift $((OPTIND - 1))
+
+PROJECT_PATH=$1
+
+if [[ -z $UNITY_VERSION ]]; then
+    UNITY_VERSION=$(cat $PROJECT_PATH/ProjectSettings/ProjectVersion.txt | grep -Eom 1 "$VERSION_REGEX") ||
+    exit 1
+fi
+
+case "$OSTYPE" in
+    darwin*)
+        INSTALLATION_PATH_PREFIX=${UNITY_INSTALLATION_PREFIX:="/Applications/Unity/Hub/Editor"}
+        INSTALLATION_PATH_POSTFIX="Unity.app/Contents/MacOS/Unity"
+        ;;
+    msys*)
+        INSTALLATION_PATH_PREFIX=${UNITY_INSTALLATION_PREFIX:="C:\\Program Files\\Unity\\Hub\\Editor"}
+        INSTALLATION_PATH_POSTFIX="Editor\\Unity.exe"
+        ;;
+    *) echo "Current OS is not supported" ;;
+esac
+
+if [[ $BATCH_MODE == true ]]; then
+    "$INSTALLATION_PATH_PREFIX/$UNITY_VERSION/$INSTALLATION_PATH_POSTFIX" -projectPath $PROJECT_PATH -batchmode "$ARGUMENTS" & disown -h
+else
+    "$INSTALLATION_PATH_PREFIX/$UNITY_VERSION/$INSTALLATION_PATH_POSTFIX" -projectPath $PROJECT_PATH & disown -h
+fi
+
+if [[ $OPEN_EDITOR == true ]]; then
+    open_code_editor
+fi

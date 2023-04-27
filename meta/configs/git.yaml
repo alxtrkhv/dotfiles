@@ -1,0 +1,10 @@
+- link:
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore_global: git/gitignore_global
+    ~/.gitattributes_global: git/gitattributes_global
+
+- shell:
+    - command: |-
+        if ! [[ -f  $HOME/.gitconfig_specific ]]; then
+          touch $HOME/.gitconfig_specific
+        fi

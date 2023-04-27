@@ -1,0 +1,12 @@
+#!/bin/bash
+
+case "$OSTYPE" in
+    darwin*)
+        if [[ -d "/Applications/IntelliJ IDEA.app" ]]; then
+            open -a "IntelliJ IDEA.app" "$@"
+        else
+            open -a "IntelliJ IDEA CE.app" "$@"
+        fi
+        ;;
+    *) echo "Current OS not supported" ;;
+esac

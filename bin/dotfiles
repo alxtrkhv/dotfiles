@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+function walk_dir() {
+    for pathname in "$1"/*; do
+        if [ -d "$pathname" ]; then
+            walk_dir "$pathname" ${2:-$1}
+        elif [ -e "$pathname" ]; then
+            file=${pathname/${2:-$1}/}
+            echo ${file/.yaml/}
+        fi
+    done
+}
+
+cd ${DOTFILES_DIR:="$HOME/.dotfiles"}
+
+while getopts ":egr" OPTION; do
+    case "$OPTION" in
+        e)
+            shift $((OPTIND - 1))
+            path=${@:-.}
+            nvim $path || vim $path
+            exit 0
+            ;;
+        g)
+            shift $((OPTIND - 1))
+            git "$@"
+            exit 0
+            ;;
+        r)
+            echo $DOTFILES_DIR
+            exit 0
+            ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+MODE="$1"
+
+shift
+
+case "$MODE" in
+    install) ./install "$@" ;;
+    update)
+        git add .
+        git commit -m "Update dotfiles"
+        git pull --rebase
+        git push
+        ;;
+    reset)
+        git reset --hard
+        git clean -f .
+        ;;
+    drop-history)
+        git checkout --orphan temp
+        git commit -m "Initial commit"
+        git branch -M main
+        git push -f -u origin main
+        ;;
+    log | lg) git lg ;;
+    pull) git pull --rebase ;;
+    status | st) git status -s ;;
+    diff | df) git diff ;;
+    list | ls) walk_dir "./meta/configs/" ;;
+    *) "$@" ;;
+esac

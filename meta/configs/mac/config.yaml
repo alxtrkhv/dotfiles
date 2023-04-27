@@ -1,0 +1,4 @@
+- create:
+    - ~/Projects
+- link:
+    ~/Documents/Projects: ~/Projects

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+PROJECT_PREFIX="$(git config --get jira.prefix)"
+DEFAULT_PREFIX="DEV"
+MESSAGE_PREFIX_REGEX='^\[.*\]'
+
+if [ -z "$PROJECT_PREFIX" ]; then
+    ISSUE_REGEX="[a-zA-Z]+-[0-9]+"
+else
+    ISSUE_REGEX="$PROJECT_PREFIX-[0-9]+"
+fi
+
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+COMMIT_FILE="$1"
+COMMIT_MESSAGE="$(cat $COMMIT_FILE)"
+
+MESSAGE_PREFIX="$(echo $COMMIT_MESSAGE | grep -Eo $MESSAGE_PREFIX_REGEX | head -1)"
+ISSUE="$(echo $BRANCH | grep -Eio $ISSUE_REGEX | head -1 | tr '[a-z]' '[A-Z]')"
+
+if [ -z "$MESSAGE_PREFIX" ]; then
+    echo "${ISSUE:-$DEFAULT_PREFIX}: $COMMIT_MESSAGE" > $COMMIT_FILE
+fi

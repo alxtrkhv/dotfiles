@@ -1,0 +1,15 @@
+{
+  "files.associations": {
+    "**/bin/*": "shellscript",
+    "zshrc": "shellscript",
+    "bashrc": "shellscript",
+    "bash_profile": "shellscript",
+    "bashrc-win": "shellscript",
+    "bash_profile-win": "shellscript",
+    "install-profile": "shellscript",
+    "install-standalone": "shellscript",
+    "gitconfig": "properties",
+    "gitattributes_global": "properties",
+    "gitignore_global": "ignore"
+  }
+}
