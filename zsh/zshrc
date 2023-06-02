@@ -51,7 +51,8 @@ function t() {
 }
 
 function tm() {
-    tmux attach || tmux
+    session_name="${1:-default}"
+    tmux attach -t $session_name || tmux new-session -s $session_name
 }
 
 function get-now() {
