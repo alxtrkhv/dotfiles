@@ -37,10 +37,6 @@ function unset-rprompt() {
 
 function setprompt() {
     case "$1" in
-        full)
-            PROMPT=$PROMPT_FULL
-            set-rprompt
-            ;;
         no-directory)
             PROMPT=$PROMPT_FULL_NO_DIR
             set-rprompt
@@ -52,6 +48,10 @@ function setprompt() {
         no-git)
             PROMPT=$NO_GIT_PROMPT
             unset-rprompt
+            ;;
+        full|*)
+            PROMPT=$PROMPT_FULL
+            set-rprompt
             ;;
     esac
 }
