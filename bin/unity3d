@@ -30,7 +30,7 @@ function show_help_message(){
 
 function open_code_editor(){
     if [[ ! -z $UNITY_CODE_EDITOR ]]; then
-        "$UNITY_CODE_EDITOR $PROJECT_PATH/$(basename $(realpath $PROJECT_PATH)).sln"
+        $UNITY_CODE_EDITOR $PROJECT_PATH/$(basename $(realpath $PROJECT_PATH)).sln
     fi
 }
 
