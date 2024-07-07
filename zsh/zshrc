@@ -6,6 +6,9 @@ setopt HIST_IGNORE_SPACE
 PATH="$HOME/.local/bin:$PATH"
 FPATH="$FPATH:$(dotfiles -r)/zsh/completions"
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # M1 #
 ######
 
