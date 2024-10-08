@@ -1,8 +1,0 @@
-- link:
-    ~/.config/iterm2/com.googlecode.iterm2.plist: iterm2/com.googlecode.iterm2.plist
-
-- shell:
-    - command: |-
-        if ! [[ -d /Applications/iTerm.app ]]; then
-          brew install iterm2
-        fi
