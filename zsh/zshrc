@@ -59,7 +59,7 @@ function tm() {
 
     [ -f "~/.tmux_templates/$template_name.conf" ] || template_name="default"
 
-    tmux attach -t $session_name || tmux new-session -s $session_name -f "~/.tmux_templates/$template_name.conf"
+    tmux new-session -A -s $session_name -f "~/.tmux_templates/$template_name.conf"
 }
 
 function get-now() {
