@@ -1,2 +1,5 @@
+- shell:
+    command: pipx install gpt-command-line
+
 - link:
     ~/.config/gpt-cli/gpt.yml: gpt-cli/gpt.yml
