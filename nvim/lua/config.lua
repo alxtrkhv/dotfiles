@@ -1,5 +1,7 @@
-local config = require('lspconfig')
+local lsp = require('lspconfig')
 
-config.pyright.setup { }
+lsp.pyright.setup { }
+lsp.ts_ls.setup { }
 
-config.ts_ls.setup { }
+local mason = require('mason')
+mason.setup { }
