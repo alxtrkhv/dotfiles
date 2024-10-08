@@ -57,9 +57,9 @@ function tm() {
     session_name="${1:-default}"
     template_name="${2:-$session_name}"
 
-    [ -f "~/.tmux_templates/$template_name.conf" ] || template_name="default"
+    [ -f "$HOME/.tmux/$template_name.conf" ] || template_name="default"
 
-    tmux new-session -A -s $session_name -f "~/.tmux_templates/$template_name.conf"
+    tmux new-session -A -s $session_name "tmux source-file $HOME/.tmux/$template_name.conf"
 }
 
 function get-now() {

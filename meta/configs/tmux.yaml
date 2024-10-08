@@ -1,8 +1,8 @@
 - create:
-    - ~/.tmux_templates
+    - ~/.tmux
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.tmux_templates/:
+    ~/.tmux/:
       path: tmux/templates/*
       glob: true
