@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
   use 'sainnhe/everforest'
 
   use {
-  'nvim-telescope/telescope.nvim', tag = '0.1.8',
+  'nvim-telescope/telescope.nvim',
   requires = { {'nvim-lua/plenary.nvim'} }
   }
 
