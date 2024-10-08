@@ -15,6 +15,10 @@ return require('packer').startup(function(use)
   requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  use {
+    "williamboman/mason.nvim"
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end

@@ -1,7 +1,5 @@
-require('lspconfig').pyright.setup {
+local config = require('lspconfig')
 
-}
+config.pyright.setup { }
 
-require('lspconfig').ts_ls.setup {
-
-}
+config.ts_ls.setup { }
