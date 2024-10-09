@@ -17,7 +17,7 @@ while getopts ":e:gr" OPTION; do
     case "$OPTION" in
         e)
             shift $((OPTIND - 1))
-            path=./${OPTARG:-.}
+            path=./$OPTARG
             nvim $path || vim $path
             exit 0
             ;;
