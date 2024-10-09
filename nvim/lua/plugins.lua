@@ -14,9 +14,11 @@ return require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
 
-  use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
-  use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
+  use 'nvim-tree/nvim-web-devicons'
+  use 'lewis6991/gitsigns.nvim'
+
   use 'romgrk/barbar.nvim'
+  use 'nvim-tree/nvim-tree.lua'
 
   if packer_bootstrap then
     require('packer').sync()
