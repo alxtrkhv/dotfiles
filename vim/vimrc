@@ -18,3 +18,5 @@ set smartindent
 set nobackup
 set nowritebackup
 set noswapfile
+
+set hidden

@@ -5,4 +5,8 @@ lsp.ts_ls.setup { }
 
 require('mason').setup { }
 
-require("nvim-tree").setup { }
+require("nvim-tree").setup {
+  view = {
+    side = "right"
+  }
+}
