@@ -13,11 +13,11 @@ function walk_dir() {
 
 cd ${DOTFILES_DIR:="$HOME/.dotfiles"}
 
-while getopts ":egr" OPTION; do
+while getopts ":e:gr" OPTION; do
     case "$OPTION" in
         e)
             shift $((OPTIND - 1))
-            path=${@:-.}
+            path=./${OPTARG:-.}
             nvim $path || vim $path
             exit 0
             ;;
