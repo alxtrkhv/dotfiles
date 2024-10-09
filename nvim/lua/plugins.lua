@@ -6,18 +6,25 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'neovim/nvim-lspconfig'
-  use 'sainnhe/everforest'
-  use 'williamboman/mason.nvim'
+  use {
+    'wbthomason/packer.nvim',
+    'neovim/nvim-lspconfig',
+    'sainnhe/everforest',
 
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',  
 
-  use 'nvim-tree/nvim-web-devicons'
-  use 'lewis6991/gitsigns.nvim'
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
 
-  use 'nvim-tree/nvim-tree.lua'
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim',
+
+    'nvim-tree/nvim-web-devicons',
+    'lewis6991/gitsigns.nvim',
+
+    'stevearc/oil.nvim',
+  }
 
   if packer_bootstrap then
     require('packer').sync()
