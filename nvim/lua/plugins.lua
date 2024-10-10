@@ -17,6 +17,9 @@ return require('packer').startup(function(use)
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-nvim-lsp',
 
+    'tpope/vim-repeat',
+    'ggandor/leap.nvim',
+
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope.nvim',
 

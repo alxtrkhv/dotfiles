@@ -24,10 +24,20 @@ require('cmp').setup {
   } }
 }
 
+require('leap').create_default_mappings()
+
 require('oil').setup {
   view_options = {
     is_hidden_file = function(name, _)
-      return name == '__pycache__' or name == '.DS_Store'
+      return
+        name == '__pycache__' or
+        name == '.DS_Store' or
+        name == '.pytest_cache' or
+        name == '.venv' or
+        name == '.git' or
+        name == '.fleet' or
+        name == '.vscode' or
+        name == '.idea'
     end,
   },
 }
