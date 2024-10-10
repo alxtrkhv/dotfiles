@@ -5,6 +5,7 @@ syntax on
 
 set noerrorbells
 set novisualbell
+set number
 
 set tabstop=2
 set shiftwidth=2

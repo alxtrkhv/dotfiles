@@ -24,4 +24,10 @@ require('cmp').setup {
   } }
 }
 
-require('oil').setup { }
+require('oil').setup {
+  view_options = {
+    is_hidden_file = function(name, _)
+      return name == '__pycache__' or name == '.DS_Store'
+    end,
+  },
+}
