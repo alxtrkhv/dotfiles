@@ -21,3 +21,8 @@ set nowritebackup
 set noswapfile
 
 set hidden
+
+set ignorecase
+set guicursor=
+
+set clipboard+=unnamedplus
