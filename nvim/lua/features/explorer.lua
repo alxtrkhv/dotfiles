@@ -1,6 +1,9 @@
 return {{
     'stevearc/oil.nvim',
     config = function()
+        vim.g.loaded_netrw = 1
+        vim.g.loaded_netrwPlugin = 1
+
         require('oil').setup {
             view_options = {
                 is_hidden_file = function(name, _)
