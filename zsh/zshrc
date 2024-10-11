@@ -33,6 +33,12 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
     source $ZSH/oh-my-zsh.sh
 fi
 
+# BINDINGS #
+############
+
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
+
 # UNITY #
 #########
 
