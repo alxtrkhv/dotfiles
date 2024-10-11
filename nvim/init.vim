@@ -1,12 +1,7 @@
-lua require('manager.install')
-lua require('manager.start')
+require('manager.install')
+require('manager.start')
 
-source ~/.vimrc
+vim.cmd('source ~/.vimrc')
 
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
-
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

@@ -3,7 +3,13 @@ return {{
     config = function()
         require("lspconfig").pyright.setup({})
         require("lspconfig").ts_ls.setup({})
-    end
+    end,
+    keys = {
+        { '<leader>ff', '<cmd>Telescope find_files<cr>' },
+        { '<leader>fg', '<cmd>Telescope live_grep<cr>' },
+        { '<leader>fb', '<cmd>Telescope buffers<cr>' },
+        { '<leader>fh', '<cmd>Telescope help_tags<cr>' },
+      },
 }, {
     "williamboman/mason.nvim",
     config = function()
