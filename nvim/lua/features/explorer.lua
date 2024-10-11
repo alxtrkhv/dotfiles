@@ -17,7 +17,11 @@ return {{
                         name == '.vscode' or
                         name == '.idea'
                 end
-            }
+            },
+            keymaps = {
+              ["<C-h>"] = false,
+              ["<C-l>"] = false,
+            },
         }
     end
 }}
