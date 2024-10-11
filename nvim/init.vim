@@ -1,4 +1,4 @@
+require('config.init')
 require('manager.install')
 require('manager.start')
-
-vim.cmd('source ~/.vimrc')
+require('config.start')
