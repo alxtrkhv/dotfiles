@@ -1,8 +1,8 @@
 return {{
     "neovim/nvim-lspconfig",
     config = function()
-        require("lspconfig").pyright.setup()
-        require("lspconfig").lsp.ts_ls.setup()
+        require("lspconfig").pyright.setup({})
+        require("lspconfig").ts_ls.setup({})
     end
 }, {
     "williamboman/mason.nvim",
