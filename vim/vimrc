@@ -26,3 +26,6 @@ set ignorecase
 set guicursor=
 
 set clipboard+=unnamedplus
+
+set endofline
+set fixendofline
