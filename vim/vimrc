@@ -29,3 +29,5 @@ set clipboard+=unnamedplus
 
 set endofline
 set fixendofline
+
+autocmd BufWritePre * %s/\s\+$//e
