@@ -11,7 +11,6 @@ return {{
     'ggandor/leap.nvim',
     depedependencies = {'tpope/vim-repeat'},
     config = function()
-        require('leap').create_default_mappings()
-
+      require('leap').create_default_mappings()
     end
 }}
