@@ -4,6 +4,7 @@
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux/plugins/tpm: tmux/tpm
     ~/.tmux/templates/:
       path: tmux/templates/*
       glob: true
