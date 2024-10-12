@@ -4,6 +4,13 @@ return {{
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "oil",
+      callback = function()
+        vim.keymap.set("n", "s", "s", { buffer = true })
+      end,
+    })
+
     require('oil').setup {
       view_options = {
         is_hidden_file = function(name, _)
