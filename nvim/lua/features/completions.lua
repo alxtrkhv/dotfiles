@@ -27,4 +27,12 @@ return {{
             }}
         }
     end
-}, {'hrsh7th/cmp-nvim-lsp'}}
+}, {
+    'hrsh7th/cmp-nvim-lsp'
+}, {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs')
+    end
+}
+}
