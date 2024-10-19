@@ -34,5 +34,7 @@ return {{
     config = function()
       require('nvim-autopairs')
     end
+}, {
+    'NoahTheDuke/vim-just'
 }
 }

@@ -12,6 +12,18 @@ assistants:
           content: "Your responses must be short and concise. Do not include explanations unless asked.",
         }
       - { role: "assistant", content: "Understood." }
+  dev-4o:
+    model: gpt-4o
+    messages:
+      - {
+          role: "system",
+          content: "You are a helpful assistant who is an expert in software development. You are helping a user who is a software developer. Your responses are short and concise. You include code snippets when appropriate. Code snippets are formatted using Markdown with a correct language tag",
+        }
+      - {
+          role: "user",
+          content: "Your responses must be short and concise. Do not include explanations unless asked.",
+        }
+      - { role: "assistant", content: "Understood." }
   default:
     model: gpt-4o
   4o:
